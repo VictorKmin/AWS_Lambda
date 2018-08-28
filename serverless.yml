@@ -1,0 +1,52 @@
+# Welcome to Serverless!
+# Happy Coding!
+
+service: hello
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-3
+
+  include:
+  - utils/**
+plugins:
+- serverless-offline
+functions:
+  hello:
+    handler: handler.hello
+    events:
+    - http:
+        path: /
+        method: get
+  getOne:
+    handler: handler.getOne
+    events:
+    - http:
+        path: users/{name}
+        method: get
+  getAll:
+    handler: handler.getAll
+    events:
+    - http:
+        path: users
+        method: get
+  create:
+    handler: handler.create
+    events:
+    - http:
+        path: users
+        method: post
+  createTable:
+    handler: handler.createTable
+    events:
+    - http:
+        path: table
+        method: post
+  getTables:
+    handler: handler.getTables
+    events:
+    - http:
+        path: table
+        method: get
