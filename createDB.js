@@ -3,7 +3,6 @@ const dynamo = new AWS.DynamoDB({
     endpoint: 'http://localhost:8000',
     region: 'eu-west-3'
 });
-let isTableCreate = null;
 
 module.exports = () => {
 
@@ -20,13 +19,13 @@ module.exports = () => {
         ],
         AttributeDefinitions: [
             {
-                AttributeName: 'name',
-                AttributeType: 'S',
-            }, {
                 AttributeName: 'id',
                 AttributeType: 'N',
             },
-
+            {
+                AttributeName: 'name',
+                AttributeType: 'S',
+            }
         ],
         ProvisionedThroughput: {
             ReadCapacityUnits: 10,
@@ -35,8 +34,8 @@ module.exports = () => {
     };
 
     dynamo.createTable(params, function (err, data) {
-        if (err) isTableCreate = JSON.stringify(err); // an error occurred
-        else isTableCreate = JSON.stringify(data); // successful response
+        if (err) JSON.stringify(err); // an error occurred
+        else JSON.stringify(data); // successful response
     });
 };
 
