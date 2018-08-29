@@ -24,7 +24,7 @@ functions:
     handler: handler.getOne
     events:
     - http:
-        path: users/{name}
+        path: users/{id}
         method: get
   getAll:
     handler: handler.getAll
@@ -38,6 +38,18 @@ functions:
     - http:
         path: users
         method: post
+  update:
+    handler: handler.update
+    events:
+    - http:
+        path: users
+        method: put
+  delete:
+    handler: handler.delete
+    events:
+    - http:
+        path: users
+        method: delete
   createTable:
     handler: handler.createTable
     events:

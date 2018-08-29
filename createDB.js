@@ -12,24 +12,17 @@ module.exports = () => {
             {
                 AttributeName: 'id',
                 KeyType: 'HASH'
-            }, {
-                AttributeName: 'name',
-                KeyType: 'RANGE'
             }
         ],
         AttributeDefinitions: [
             {
                 AttributeName: 'id',
-                AttributeType: 'N',
-            },
-            {
-                AttributeName: 'name',
                 AttributeType: 'S',
             }
         ],
         ProvisionedThroughput: {
-            ReadCapacityUnits: 10,
-            WriteCapacityUnits: 10,
+            ReadCapacityUnits: 1,
+            WriteCapacityUnits: 1,
         },
     };
 
