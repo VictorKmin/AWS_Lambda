@@ -4,6 +4,7 @@ const dynamo = new AWS.DynamoDB({
     region: 'eu-west-3'
 });
 
+
 module.exports = () => {
 
     const params = {
@@ -20,13 +21,29 @@ module.exports = () => {
                 AttributeType: 'S',
             }
         ],
+        LocalSecondaryIndexes: [
+            {
+                "IndexName": "FirstNameIndex",
+                "KeySchema": [
+                    {
+                        "AttributeName": "firstName",
+                        "KeyType": "HASH"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "ALL"
+                }
+            }
+        ],
         ProvisionedThroughput: {
-            ReadCapacityUnits: 1,
-            WriteCapacityUnits: 1,
+            ReadCapacityUnits: 10,
+            WriteCapacityUnits: 10,
         },
     };
 
     dynamo.createTable(params, function (err, data) {
+        console.log(err);
+        console.log(data);
         if (err) JSON.stringify(err); // an error occurred
         else JSON.stringify(data); // successful response
     });

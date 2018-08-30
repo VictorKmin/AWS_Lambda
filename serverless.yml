@@ -48,8 +48,14 @@ functions:
     handler: handler.delete
     events:
     - http:
-        path: users
+        path: users/{id}
         method: delete
+  findByFirstName:
+    handler: handler.findByFirstName
+    events:
+    - http:
+        path: findbyname
+        method: get
   createTable:
     handler: handler.createTable
     events:

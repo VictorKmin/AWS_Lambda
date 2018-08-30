@@ -2,7 +2,6 @@ const AWS = require('aws-sdk');
 
 module.exports = () => {
 
-
     const dynamo = new AWS.DynamoDB({
         endpoint: 'http://localhost:8000',
         region: 'eu-west-3'

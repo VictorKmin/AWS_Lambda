@@ -1,5 +1,5 @@
 module.exports = (statusCode, message)=> {
-    const resp = {
+    return {
         statusCode: statusCode,
         body: JSON.stringify({
             event: message
