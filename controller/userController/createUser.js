@@ -1,9 +1,5 @@
 const dynamo = require('../../helper/DBConnect');
-module.exports = (validUser) => {
-    const id = validUser.id;
-    const firstName = validUser.firstName;
-    const lastName = validUser.lastName;
-    const email = validUser.email;
+module.exports = (id, firstName, lastName, email) => {
     return new Promise((resolve, reject) => {
         const params = {
             TableName: 'users',
@@ -16,7 +12,7 @@ module.exports = (validUser) => {
         };
         dynamo.put(params, function (err, data) {
             if (err) return reject(err);
-             resolve(data)
+           return resolve(data)
         });
     })
 };

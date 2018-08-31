@@ -20,29 +20,29 @@ module.exports = () => {
                 AttributeName: 'id',
                 AttributeType: 'S',
             },
-            {
-                AttributeName: 'firstName',
-                AttributeType: 'S',
-            }
+            // {
+            //     AttributeName: 'firstName',
+            //     AttributeType: 'S',
+            // }
         ],
-        GlobalSecondaryIndexes: [
-            {
-                "IndexName": "FirstNameIndex",
-                "KeySchema": [
-                    {
-                        "AttributeName": "firstName",
-                        "KeyType": "HASH"
-                    }
-                ],
-                "Projection": {
-                    "ProjectionType": "ALL"
-                },
-                "ProvisionedThroughput": {
-                    "ReadCapacityUnits": 1,
-                    "WriteCapacityUnits": 1,
-                }
-            }
-        ],
+        // GlobalSecondaryIndexes: [
+        //     {
+        //         "IndexName": "FirstNameIndex",
+        //         "KeySchema": [
+        //             {
+        //                 "AttributeName": "firstName",
+        //                 "KeyType": "HASH"
+        //             }
+        //         ],
+        //         "Projection": {
+        //             "ProjectionType": "ALL"
+        //         },
+        //         "ProvisionedThroughput": {
+        //             "ReadCapacityUnits": 1,
+        //             "WriteCapacityUnits": 1,
+        //         }
+        //     }
+        // ],
         ProvisionedThroughput: {
             ReadCapacityUnits: 10,
             WriteCapacityUnits: 10,
@@ -50,8 +50,8 @@ module.exports = () => {
     };
 
     dynamo.createTable(params, function (err, data) {
-        // console.log(err.message);
-        // console.log(data);
+        console.log(err);
+        console.log(data);
         if (err) JSON.stringify(err.message); // an error occurred
         else JSON.stringify(data); // successful response
     });

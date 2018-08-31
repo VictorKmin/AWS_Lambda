@@ -6,7 +6,7 @@ module.exports = () => {
         };
         dynamo.scan(params, function (err, data) {
             if (err) return reject(err);
-            resolve(data);
+            return resolve(data.Items);
         });
     });
 };

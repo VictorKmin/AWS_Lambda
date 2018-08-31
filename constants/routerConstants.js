@@ -1,2 +1,2 @@
 module.exports.users = "users";
-module.exports.tables= "tables";
+module.exports.tables= "table";

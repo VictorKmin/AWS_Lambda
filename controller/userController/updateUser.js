@@ -4,11 +4,11 @@ module.exports = (id, fist, last, email) => {
         let params = {
             TableName: "users",
             Key: {
-                "id": id,
-                "firstName": fist
+                "id": id
             },
-            UpdateExpression: "set lastName=:l, email=:e",
+            UpdateExpression: "set firstName=:f, lastName=:l, email=:e",
             ExpressionAttributeValues: {
+                ":f": fist,
                 ":l": last,
                 ":e": email
             },
