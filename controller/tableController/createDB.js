@@ -19,9 +19,13 @@ module.exports = () => {
             {
                 AttributeName: 'id',
                 AttributeType: 'S',
+            },
+            {
+                AttributeName: 'firstName',
+                AttributeType: 'S',
             }
         ],
-        LocalSecondaryIndexes: [
+        GlobalSecondaryIndexes: [
             {
                 "IndexName": "FirstNameIndex",
                 "KeySchema": [
@@ -32,6 +36,10 @@ module.exports = () => {
                 ],
                 "Projection": {
                     "ProjectionType": "ALL"
+                },
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 1,
+                    "WriteCapacityUnits": 1,
                 }
             }
         ],
@@ -42,9 +50,9 @@ module.exports = () => {
     };
 
     dynamo.createTable(params, function (err, data) {
-        console.log(err);
-        console.log(data);
-        if (err) JSON.stringify(err); // an error occurred
+        // console.log(err.message);
+        // console.log(data);
+        if (err) JSON.stringify(err.message); // an error occurred
         else JSON.stringify(data); // successful response
     });
 };

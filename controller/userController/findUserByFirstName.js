@@ -1,4 +1,4 @@
-const dynamo = require('../helper/DBConnect');
+const dynamo = require('../../helper/DBConnect');
 module.exports = (name) => {
     return new Promise((resolve, reject) => {
         let params = {
@@ -9,6 +9,7 @@ module.exports = (name) => {
             }
         };
         dynamo.query(params, function (err, data) {
+            console.log(err);
             if (err) return reject(err);
             resolve(data);
         });

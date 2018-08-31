@@ -1,5 +1,5 @@
 const idV1 = require('uuid/v1');
-const readOne = require('../CRUD/readOne');
+const readOne = require('../controller/userController/findUserById');
 module.exports = (body,method) => {
 
     let firstName = body.firstName;
@@ -8,7 +8,7 @@ module.exports = (body,method) => {
     let id = body.id;
     let user = {};
 
-    if (method === "post") {
+    if (method === "POST") {
         //FirstName check
         if (!firstName) throw new Error('please enter first name');
         //LastName check

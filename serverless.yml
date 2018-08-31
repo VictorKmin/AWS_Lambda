@@ -14,57 +14,9 @@ provider:
 plugins:
 - serverless-offline
 functions:
-  hello:
-    handler: handler.hello
+  globalRouter:
+    handler: handler.globalRouter
     events:
     - http:
-        path: /
-        method: get
-  getOne:
-    handler: handler.getOne
-    events:
-    - http:
-        path: users/{id}
-        method: get
-  getAll:
-    handler: handler.getAll
-    events:
-    - http:
-        path: users
-        method: get
-  create:
-    handler: handler.create
-    events:
-    - http:
-        path: users
-        method: post
-  update:
-    handler: handler.update
-    events:
-    - http:
-        path: users
-        method: put
-  delete:
-    handler: handler.delete
-    events:
-    - http:
-        path: users/{id}
-        method: delete
-  findByFirstName:
-    handler: handler.findByFirstName
-    events:
-    - http:
-        path: findbyname
-        method: get
-  createTable:
-    handler: handler.createTable
-    events:
-    - http:
-        path: table
-        method: post
-  getTables:
-    handler: handler.getTables
-    events:
-    - http:
-        path: table
-        method: get
+        path: /{any+}
+        method: ANY

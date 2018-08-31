@@ -1,14 +1,14 @@
-const dynamo = require('../helper/DBConnect');
+const dynamo = require('../../helper/DBConnect');
 module.exports = (id, fist, last, email) => {
     return new Promise((resolve, reject) => {
         let params = {
             TableName: "users",
             Key: {
                 "id": id,
+                "firstName": fist
             },
-            UpdateExpression: "set firstName=:n, lastName=:l, email=:e",
+            UpdateExpression: "set lastName=:l, email=:e",
             ExpressionAttributeValues: {
-                ":n": fist,
                 ":l": last,
                 ":e": email
             },

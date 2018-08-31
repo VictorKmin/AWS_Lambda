@@ -1,10 +1,11 @@
-const dynamo = require('../helper/DBConnect');
+const dynamo = require('../../helper/DBConnect');
 module.exports = (id) => {
     return new Promise((resolve, reject) => {
         let params = {
             TableName: "users",
             Key: {
-                "firstName": 'itsMyname',
+                "id": "cf856130-acf5-11e8-abaa-9d00bdd9e21f",
+                "firstName": 'someNdhddame',
             }
         };
         dynamo.get(params, function (err, data) {
